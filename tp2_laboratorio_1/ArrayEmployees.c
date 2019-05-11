@@ -132,25 +132,45 @@ int menuText(char messageMenu[])
 void optionMenu(sEmployee list[],int len)
 {
     int option;
+    int employeers=0;
     do
     {
         option = menuText("1.Altas\n2.Modificar\n3.Baja\n4.Informar/Mostrar\n5.Salir\nElija una opcion: ");
         switch(option)
         {
         case 1:
-            askForData(list,  len);
 
+            askForData(list,  len);
+            employeers++;
             break;
         case 2:
+            if (employeers==0){
+                printf("No ingreso ningun empleado. Ingrese uno y vuelva a intentarlo");
+            }
+            else{
             modifyEmployees(list,len);
+            }
             break;
         case 3:
+            if (employeers==0){
+                printf("No ingreso ningun empleado. Ingrese uno y vuelva a intentarlo");
+            }
+            else{
             askForDelete(list,len);
+            }
+
             break;
         case 4:
+            if (employeers==0){
+                printf("No ingreso ningun empleado. Ingrese uno y vuelva a intentarlo");
+            }
+            else{
+
+
             sortOrPrintEmployees(list,len);
             printf("\n-------------Empleados ordenados------------\n");
             showEmployees(list,len);
+            }
             break;
 
         }
